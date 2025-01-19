@@ -1,7 +1,7 @@
 import React from 'react';
 import banner from './banner_img.png';
 import styled from 'styled-components';
-import categoryColors from './categoryColors.json';
+import categoryColors from '../../data/categoryColors.json';
 
 const BannerContainer = styled.div`
     width: 100%;

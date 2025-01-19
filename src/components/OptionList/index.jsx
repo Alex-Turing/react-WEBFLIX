@@ -30,7 +30,7 @@ const OptionList = (props) => {
 
     return (
         <StyledInputContainer>
-            <label>Equipo</label>
+            <label>Category</label>
             <StyledSelect value={value} onChange={handleChange}>
                 <option value="" disabled defaultValue="" hidden>Select a category</option>
                 { categories.map((category, index) => <option key={index} value={category}>{category}</option>)} 

@@ -24,24 +24,39 @@ const AppContainer = styled.div`
 const App = () => {
   const [movieGenre, setMovieGenre] = useState(movieGenres);
   const [cardVideo, setCardVideo] = useState(null);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchCardVideo = async () => {
-        try {
-            const response = await axios.get(`${API_BASE_URL}`);
-            const videos = response.data;
-            if (videos.length > 0) {
-                const randomIndex = Math.floor(Math.random() * videos.length);
-                setCardVideo(videos[randomIndex]);
-            } else {
-                console.warn('No videos available in the response.');
-            }
-        } catch (error) {
-            console.error('Error fetching videos: ', error);
+      try {
+        const response = await axios.get(`${API_BASE_URL}`);
+        const videos = response.data;
+
+        if (videos.length > 0) {
+          setVideos(videos);
+          const randomIndex = Math.floor(Math.random() * videos.length);
+          setCardVideo(videos[randomIndex]);
+        } else {
+          console.warn('No videos available in the response.');
         }
+      } catch (error) {
+        console.error('Error fetching videos: ', error);
+      }
     };
     fetchCardVideo();
   }, []);
+
+  const deleteCardVideo = (id) => {
+    const updatedVideos = videos.filter((video) => video.id !== id);
+    setVideos(updatedVideos);
+  };
+
+  const updateCardVideo = (updatedVideo) => {
+    const updatedVideos = videos.map((video) =>
+      video.id === updatedVideo.id ? updatedVideo : video
+    );
+    setVideos(updatedVideos);
+  }
 
   return (
     <>
@@ -51,8 +66,16 @@ const App = () => {
           <AppContainer>
             <Header />
             <Routes>
-              <Route path='/' element={ <Home movieGenre={movieGenre} cardVideo={cardVideo}/> } />
-              <Route path='newVideo' element={ <NewVideo /> } />
+              <Route path='/' element={<Home
+                movieGenre={movieGenre}
+                cardVideo={cardVideo}
+                videos={videos}
+                deleteCardVideo={deleteCardVideo}
+                updateCardVideo={updateCardVideo}
+              />
+              }
+              />
+              <Route path='newVideo' element={<NewVideo />} />
             </Routes>
           </AppContainer>
         </GradientBackground>
