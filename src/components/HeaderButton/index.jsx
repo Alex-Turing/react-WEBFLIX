@@ -13,6 +13,7 @@ const StyledHeaderButton = styled.button`
         background-color: rgb(34, 113, 209); 
         border-color: #fff; 
         box-shadow: 0px 5px 29px 0px #fff;
+        color: #fff;
     }
 `;
 

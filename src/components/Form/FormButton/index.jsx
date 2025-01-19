@@ -11,8 +11,13 @@ const StyledButton = styled.button`
     color: #fff;
     width: 180px;
     font-size: 1rem;
-    margin-top: 40px;
     font-weight: bold;
+    cursor: pointer;
+    &:hover {
+        box-shadow: ${props => props.$name === 'SAVE'
+            ? "0px 5px 29px 0px rgba(34, 113, 209, 0.70)"
+            : "0px 5px 29px 0px rgba(255, 255, 255, 0.70)"};
+    }
 `;
 
 const FormButton = (props) => {

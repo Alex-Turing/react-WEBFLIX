@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useState } from 'react'
 import Header from './components/Header'
 import NewVideo from './pages/NewVideo'
+import { movieGenres } from './data/movieGenres';
 
 const GradientBackground = styled.div`
   background: linear-gradient(175deg, #041833 4.16%, #04244f 48%, #154580 96.76%);
@@ -18,8 +19,9 @@ const AppContainer = styled.div`
   margin: 0 auto;
 `;
 
-function App() {
+const App = () => {
 
+  const [movieGenre, setMovieGenre] = useState(movieGenres);
   return (
     <>
       <Router>
@@ -28,7 +30,7 @@ function App() {
           <AppContainer>
             <Header />
             <Routes>
-              <Route path='/' element={ <Home /> } />
+              <Route path='/' element={ <Home movieGenre={movieGenre} /> } />
               <Route path='newVideo' element={ <NewVideo /> } />
             </Routes>
           </AppContainer>

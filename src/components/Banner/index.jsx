@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import banner from './banner_img.png';
-import { API_BASE_URL } from '../../apiConfig';
+import { API_BASE_URL } from '../../data/apiConfig';
 import styled from 'styled-components';
 import categoryColors from './categoryColors.json';
 

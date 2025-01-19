@@ -5,7 +5,7 @@ import FormInput from "./FormInput";
 import styled from "styled-components";
 import OptionList from "../OptionList";
 import FormButton from "./FormButton";
-import { API_BASE_URL } from '../../apiConfig';
+import { API_BASE_URL } from '../../data/apiConfig';
 
 const StyledFormContainer = styled.form`
     width: 80%;
@@ -32,6 +32,7 @@ const StyledButtonContainer = styled.div`
     justify-content: start;
     align-items: center;
     gap: 40px;
+    padding: 40px 0;
 `;
 
 const Form = (props) => {
