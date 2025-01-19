@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import banner from './banner_img.png';
-import { API_BASE_URL } from '../../data/apiConfig';
 import styled from 'styled-components';
 import categoryColors from './categoryColors.json';
 
@@ -66,26 +64,8 @@ const StyledIFrame = styled.iframe`
     border-radius: 8px;
 `;
 
-const Banner = () => {
-    const [cardVideo, setCardVideo] = useState(null);
-
-    useEffect(() => {
-        const fetchCardVideo = async () => {
-            try {
-                const response = await axios.get(`${API_BASE_URL}`);
-                const videos = response.data;
-                if (videos.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * videos.length);
-                    setCardVideo(videos[randomIndex]);
-                } else {
-                    console.warn('No videos available in the response.');
-                }
-            } catch (error) {
-                console.error('Error fetching videos: ', error);
-            }
-        };
-        fetchCardVideo();
-    }, []);
+const Banner = (props) => {
+    const { cardVideo } = props;
 
     return (
         <BannerContainer>
@@ -114,7 +94,5 @@ const Banner = () => {
         </BannerContainer>
     );
 };
-
-
 
 export default Banner;
