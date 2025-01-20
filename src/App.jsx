@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Home from './pages/Home';
 import { GlobalStyles } from "./components/GlobalStyles";
-import Header from './components/Header'
-import NewVideo from './pages/NewVideo'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import NewVideo from './pages/NewVideo';
 import { movieGenres } from './data/movieGenres';
 import { API_BASE_URL } from './data/apiConfig';
 
@@ -108,6 +109,7 @@ const App = () => {
               />
               <Route path='newVideo' element={<NewVideo />} />
             </Routes>
+            <Footer />
           </AppContainer>
         </GradientBackground>
       </Router>
