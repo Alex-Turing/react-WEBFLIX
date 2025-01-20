@@ -2,6 +2,7 @@ import React from 'react';
 import banner from './banner_img.png';
 import styled from 'styled-components';
 import categoryColors from '../../data/categoryColors.json';
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const BannerContainer = styled.div`
     width: 100%;
@@ -71,6 +72,7 @@ const Banner = (props) => {
         <BannerContainer>
             {cardVideo && (
                 <StyledBannerContent>
+                    <AiFillCloseCircle onClick={() => deleteEmployee()}/>
                     <BannerLeftSection>
                         <CategoryHeading $category={cardVideo.category}>
                             {cardVideo.category}

@@ -32,7 +32,7 @@ const StyledTitle = styled.h1`
 `;
 
 const CategorySection = (props) => {
-    const { genre, color, video, deleteCardVideo, onEditClick } = props;
+    const { genre, color, video, deleteCardVideo, onEditClick, handleVideoClick } = props;
     return (
         <>
             <StyledTitle $color={color}>{genre}</StyledTitle>
@@ -43,6 +43,7 @@ const CategorySection = (props) => {
                         video={trailer} 
                         deleteCardVideo={deleteCardVideo}
                         onEditClick={onEditClick}
+                        handleVideoClick={handleVideoClick}
                     />))
                 }
             </StyledSection>

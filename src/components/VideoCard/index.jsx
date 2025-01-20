@@ -11,6 +11,7 @@ const StyledVideoCard = styled.figure`
     & > img {
         max-width: 100%;
         border-radius: 20px 20px 0 0;
+        cursor: pointer;
     }
     figcaption {
         background-color: rgb(25, 25, 25);
@@ -43,10 +44,10 @@ const StyledFooter = styled.footer`
 `;
 
 const VideoCard = (props) => {
-    const {video, deleteCardVideo, onEditClick} = props;
+    const {video, deleteCardVideo, onEditClick, handleVideoClick} = props;
     return (
         <StyledVideoCard>
-            <img src={video.image} alt={video.title}/>
+            <img src={video.image} alt={video.title} onClick={() => handleVideoClick(video)}/>
             <figcaption>
                 <StyledFooter>
                     <StyledButtonContainer>

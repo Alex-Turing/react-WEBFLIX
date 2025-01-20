@@ -26,6 +26,7 @@ const App = () => {
   const [cardVideo, setCardVideo] = useState(null);
   const [videos, setVideos] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setVideoModalOpen] = useState(false);
 
   const [selectedVideo, setSelectedVideo] = useState(null);
 
@@ -71,6 +72,16 @@ const App = () => {
     setSelectedVideo(null);
   };
 
+  const handleVideoClick = (video) => {
+    setVideoModalOpen(true);
+    setSelectedVideo(video);
+  };
+
+  const handleCloseVideoModal = () => {
+    setVideoModalOpen(false);
+    setSelectedVideo(null);
+  };
+
   return (
     <>
       <Router>
@@ -86,9 +97,12 @@ const App = () => {
                 deleteCardVideo={deleteCardVideo}
                 updateCardVideo={updateCardVideo}
                 onEditClick={handleEditClick}
+                handleVideoClick={handleVideoClick}
+                handleCloseVideoModal={handleCloseVideoModal}
                 handleCloseModal={handleCloseModal}
                 selectedVideo={selectedVideo}
                 isModalOpen={isModalOpen}
+                isVideoModalOpen={isVideoModalOpen}
               />
               }
               />
