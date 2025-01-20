@@ -60,7 +60,7 @@ const StyledInputContainer = styled.div`
 `;
 
 const ModalEditForm = (props) => {
-    const { isModalOpen, video, onClose, movieGenre, onUpdate } = props
+    const { isModalOpen, video, onClose, movieGenre, updateCardVideo } = props
     const [formValues, setFormValues] = useState({
         title: '',
         category: '',
@@ -81,9 +81,8 @@ const ModalEditForm = (props) => {
         }
     },[video]);
 
-    console.log('formValues: ',formValues);
-
     const handleChange = (e) => {
+        console.log(e.target);
         const { name, value } = e.target;
         setFormValues((preValues) => ({
             ...preValues,
@@ -91,9 +90,12 @@ const ModalEditForm = (props) => {
         }));
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('formValues inside submit function', formValues)
         const updatedVideo = {...video, ...formValues};
-        onUpdate(updatedVideo);
+        console.log('updatedVideo: ', updatedVideo);
+        updateCardVideo(updatedVideo);
         onClose();
     };
 
@@ -102,12 +104,12 @@ const ModalEditForm = (props) => {
             {isModalOpen && <>
             <StyledOverlay>
                 <StyledDialog>
-                <StyledForm>
+                <StyledForm onSubmit={handleSubmit}>
                     <h2>EDIT VIDEO CARD:</h2>
                     {video && (
                         <StyledInputContainer>
                             <ModalFormInput category="Tilte:" value={formValues.title} name="title" onChange={handleChange} />
-                            <ModalOptionList movieGenre={movieGenre} actualGenre={video.category} />
+                            <ModalOptionList movieGenre={movieGenre} actualGenre={formValues.category} name="category" onChange={handleChange} />
                             <ModalFormInput category="Image:" value={formValues.image} name="image" onChange={handleChange}/>
                             <ModalFormInput category="Video:" value={formValues.video} name="video" onChange={handleChange}/> 
                             <label>Description:</label>

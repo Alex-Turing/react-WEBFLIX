@@ -17,11 +17,11 @@ const StyledInput = styled.input`
 `; 
 
 const ModalFormInput = (props) => {
-    const { category, value, onChange } = props;
+    const { category, value, onChange, name } = props;
     return(
         <StyledInputContainer>
             <label>{category}</label>
-            <StyledInput value={value} onChange={onChange}/>
+            <StyledInput name={name} value={value} onChange={onChange}/>
         </StyledInputContainer>
     );
 };

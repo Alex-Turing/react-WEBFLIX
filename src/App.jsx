@@ -25,6 +25,9 @@ const App = () => {
   const [movieGenre, setMovieGenre] = useState(movieGenres);
   const [cardVideo, setCardVideo] = useState(null);
   const [videos, setVideos] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
     const fetchCardVideo = async () => {
@@ -58,6 +61,16 @@ const App = () => {
     setVideos(updatedVideos);
   }
 
+  const handleEditClick = (video) => {
+    setIsModalOpen(true);
+    setSelectedVideo(video);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
+  };
+
   return (
     <>
       <Router>
@@ -72,6 +85,10 @@ const App = () => {
                 videos={videos}
                 deleteCardVideo={deleteCardVideo}
                 updateCardVideo={updateCardVideo}
+                onEditClick={handleEditClick}
+                handleCloseModal={handleCloseModal}
+                selectedVideo={selectedVideo}
+                isModalOpen={isModalOpen}
               />
               }
               />

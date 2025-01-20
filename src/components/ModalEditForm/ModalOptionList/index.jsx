@@ -19,18 +19,14 @@ const StyledSelect = styled.select`
 
 const ModalOptionList = (props) => {
 
-    const { movieGenre, actualGenre } = props;
+    const { movieGenre, actualGenre, onChange, name } = props;
 
     return (
         <StyledInputContainer>
             <label>Category:</label>
-            <StyledSelect value={actualGenre}>
-                <option value="" disabled>Select a Category</option>
+            <StyledSelect name={name} value={actualGenre} onChange={onChange}>
                 { movieGenre.map((category, index) => 
-                    <option key={index} 
-                            value={category.genre}>
-                                {category.genre}
-                    </option>
+                    <option key={index} value={category.genre}>{category.genre}</option>
                 )} 
             </StyledSelect>
         </StyledInputContainer>
